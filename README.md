@@ -1,6 +1,6 @@
 # STM32 WM-Bus Middleware Library MCU Software Component
 
-![tag](https://img.shields.io/badge/tag-v1.1.0-brightgreen.svg)
+![tag](https://img.shields.io/badge/tag-v1.2.0-brightgreen.svg)
 
 ## Overview of the STM32Cube MCU offer on GitHub
 

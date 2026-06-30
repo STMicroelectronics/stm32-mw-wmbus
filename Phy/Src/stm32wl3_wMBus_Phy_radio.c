@@ -1706,10 +1706,13 @@ void wMBus_Phy_IRQHandler(void)
     __HAL_MRSUBG_CLEAR_RFSEQ_IRQ_FLAG(MR_SUBG_GLOB_STATUS_RFSEQ_IRQ_STATUS_RX_ALMOST_FULL_0_F);
   }
 
-  /* check this case even if it shouldn't happen */
   if (irq & MR_SUBG_GLOB_STATUS_RFSEQ_IRQ_STATUS_RX_OK_F)
   {
+    /* Clear the IRQ flag */
     __HAL_MRSUBG_CLEAR_RFSEQ_IRQ_FLAG(MR_SUBG_GLOB_STATUS_RFSEQ_IRQ_STATUS_RX_OK_F);
+#ifdef WMBUS_DEBUG
+    wMBus_Phy_trace_debug_log(DEBUG_IRQ_RX_DONE_LOG, 0, 0, 0);
+#endif
 
 #ifdef STM32WL33XA
 #ifdef ADJUST_FREQUENCY_169MHZ
@@ -1719,7 +1722,7 @@ void wMBus_Phy_IRQHandler(void)
 #endif
 
 #ifdef WMBUS_DEBUG
-    wMBus_Phy_trace_debug_log(DEBUG_IRQ_RX_DONE_LOG, 0, 0, 0);
+    wMBus_Phy_trace_debug_log(DEBUG_EVENT_WMBUS_RX_OVERFLOW_ERROR, 0, 0, 0);
 #endif
 
     wMBus_Radio_Event_bitmap |= WMBUS_RX_OVERFLOW_ERROR;
@@ -1739,7 +1742,6 @@ void wMBus_Phy_IRQHandler(void)
   }
 
 #ifdef PREAMBLE_AND_SYNC_IRQ_ENABLE
-  /* check this case even if it shouldn't happen */
   if (irq & MR_SUBG_GLOB_STATUS_RFSEQ_IRQ_STATUS_SYNC_VALID_F)
   {
     __HAL_MRSUBG_CLEAR_RFSEQ_IRQ_FLAG(MR_SUBG_GLOB_STATUS_RFSEQ_IRQ_STATUS_SYNC_VALID_F);
@@ -1747,7 +1749,6 @@ void wMBus_Phy_IRQHandler(void)
     wMBus_Radio_Event_bitmap |= WMBUS_RX_VALID_SYNC_DETECTED;
   }
 
-  /* check this case even if it shouldn't happen */
   if (irq & MR_SUBG_GLOB_STATUS_RFSEQ_IRQ_STATUS_PREAMBLE_VALID_F)
   {
     __HAL_MRSUBG_CLEAR_RFSEQ_IRQ_FLAG(MR_SUBG_GLOB_STATUS_RFSEQ_IRQ_STATUS_PREAMBLE_VALID_F);

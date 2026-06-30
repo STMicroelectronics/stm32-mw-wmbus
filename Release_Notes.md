@@ -4,7 +4,7 @@
 
 # <mark> STM32CubeWL3 wM-Bus Middleware </mark>
 
-Copyright &copy; 2024-2025 STMicroelectronics\
+Copyright &copy; 2024-2026 STMicroelectronics\
 
 [![ST logo](../../../_htmresc/st_logo_2020.png)](https://www.st.com)
 
@@ -28,7 +28,40 @@ This driver is composed of 2 directories both with 2 subdirectories:
 
 # Update History
 
-<label for="collapse-section4" checked aria-hidden="true">__V1.1.0 / 16-December-2025__</label>
+<label for="collapse-section5" checked aria-hidden="true">__V1.2.0 / 27-May-2026__</label>
+<div>
+
+## Main Changes
+### Added component security level indication.
+### Added some code for debug purposes.
+
+## Contents
+
+Contents of wM-Bus Middleware:
+
+- DataLink:
+  - Inc:
+    - stm32wl3_wMBus_DataLink_timer.h: Header file of wM-Bus DataLink Timer module.
+    - stm32wl3_wMBus_DataLink.h: Header file of wM-Bus DataLink module.
+  - Src:
+    - stm32wl3_wMBus_DataLink_timer.c: Source file of wM-Bus DataLink Timer module.
+    - stm32wl3_wMBus_DataLink.c: Source file of wM-Bus DataLink module.
+- Phy:
+  - Inc:
+    - stm32wl3_wMBus_Phy_pwr.h: Header file of wM-Bus Phy Power module.
+    - stm32wl3_wMBus_Phy_radio.h: Header file of wM-Bus Phy Radio module.
+  - Src:
+    - stm32wl3_wMBus_Phy_pwr.c: Source file of wM-Bus Phy Power module.
+    - stm32wl3_wMBus_Phy_radio.c: Source file of wM-Bus Phy Radio module.
+
+## Known Limitations
+
+- wM-Bus mode N not supported. 
+- Frequent Access Cycle not supported.
+
+</div>
+
+<label for="collapse-section4" aria-hidden="true">__V1.1.0 / 16-December-2025__</label>
 <div>
 
 ## Main Changes

@@ -64,7 +64,7 @@ __STATIC_INLINE void LL_PWR_DBGSMPS_Current_Selection(uint8_t current)
 {
   uint32_t register_temp;
 
-  register_temp = READ_REG(PWR->RESERVED3);
+  register_temp = READ_REG(PWR->DBGSMPS);
 
   switch (current)
   {
@@ -72,25 +72,25 @@ __STATIC_INLINE void LL_PWR_DBGSMPS_Current_Selection(uint8_t current)
     /* clear b15 & b14 */
     register_temp &= 0xFFFF3FFF;
     register_temp |= 0x00000000;
-    WRITE_REG(PWR->RESERVED3, register_temp);
+    WRITE_REG(PWR->DBGSMPS, register_temp);
     break;
   case 1:
     /* clear b15 & set b14 */
     register_temp &= 0xFFFF3FFF;
     register_temp |= 0x00004000;
-    WRITE_REG(PWR->RESERVED3, register_temp);
+    WRITE_REG(PWR->DBGSMPS, register_temp);
     break;
   case 2:
     /* set b15 & clear b14 */
     register_temp &= 0xFFFF3FFF;
     register_temp |= 0x00008000;
-    WRITE_REG(PWR->RESERVED3, register_temp);
+    WRITE_REG(PWR->DBGSMPS, register_temp);
     break;
   case 3:
     /* set b15 & set b14 */
     register_temp &= 0xFFFF3FFF;
     register_temp |= 0x0000C000;
-    WRITE_REG(PWR->RESERVED3, register_temp);
+    WRITE_REG(PWR->DBGSMPS, register_temp);
     break;
   default:
     break;
