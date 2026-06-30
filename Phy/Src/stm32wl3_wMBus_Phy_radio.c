@@ -1734,10 +1734,8 @@ void wMBus_Phy_IRQHandler(void)
 #endif
 
     /* re-start Rx */
-    __HAL_MRSUBG_STROBE_CMD(CMD_RX);
-#ifdef WMBUS_DEBUG
-    wMBus_Phy_trace_debug_log(DEBUG_COMMAND_RX_CONTINUOUS_LOG, 0, 0, 0);
-#endif
+    wMBus_Phy_prepare_Rx();
+    wMBus_Phy_start_continuousRx();
   }
 
 #ifdef PREAMBLE_AND_SYNC_IRQ_ENABLE
